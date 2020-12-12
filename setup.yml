@@ -13,3 +13,4 @@
     - git
     - nginx
     - ufw
+    - docker_pi_sensor_hub

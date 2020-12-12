@@ -1,0 +1,10 @@
+---
+- name: "python3 is present"
+  package:
+    name: python3
+    state: present
+
+- name: "python3-smbus is present"
+  package:
+    name: python3-smbus
+    state: present

@@ -1,0 +1,11 @@
+---
+- name: "nginx is present"
+  package:
+    name: nginx
+    state: present
+
+- name: "nginx is running"
+  service:
+    name: nginx
+    state: started
+    enabled: true

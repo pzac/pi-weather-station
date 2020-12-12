@@ -1,0 +1,7 @@
+---
+- name: Setup
+  hosts: all
+  become: true
+
+  roles:
+    - git

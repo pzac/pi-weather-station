@@ -11,6 +11,7 @@
 
   roles:
     - git
+    - zsh
     - nginx
     - ufw
     - docker_pi_sensor_hub

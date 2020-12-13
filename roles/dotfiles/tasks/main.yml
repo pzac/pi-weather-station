@@ -1,0 +1,11 @@
+- name: Clone dotfiles repository
+  become: false
+  git:
+    repo: https://github.com/pzac/dotfiles.git
+    dest: /home/pi/.dotfiles
+
+- name: Symlink dotfiles
+  become: false
+  command:
+    cmd: /home/pi/.dotfiles/make_sym_links.sh
+    creates: /home/pi/.irbrc

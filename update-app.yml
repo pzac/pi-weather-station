@@ -1,6 +1,7 @@
 ---
 - name: Update app
   hosts: all
+  gather_facts: false
 
   roles:
     - application

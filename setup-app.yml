@@ -2,12 +2,10 @@
 - name: Setup app
   hosts: all
 
-  tasks:
-    - name: Copy application files
-      copy:
-        src: ../app
-        dest: /home/pi/
+  roles:
+    - application
 
+  tasks:
     - name: Setup python environment
       command:
         cmd: pip3 install -r /home/pi/app/requirements.txt

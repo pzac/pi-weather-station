@@ -2,3 +2,6 @@
 - name: Update app
   hosts: all
 
+  roles:
+    - application
+

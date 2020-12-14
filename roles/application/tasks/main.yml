@@ -1,0 +1,9 @@
+---
+- name: Update application
+  copy:
+    src: "../app/{{ item }}"
+    dest: /home/pi/
+  with_items:
+    - requirements.txt
+    - hello.py
+

@@ -1,0 +1,9 @@
+---
+- name: Setup app
+  hosts: all
+
+  tasks:
+    - name: Copy application files
+      copy:
+        src: ../app
+        dest: /home/pi/

@@ -1,0 +1,4 @@
+---
+- name: Update app
+  hosts: all
+

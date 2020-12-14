@@ -7,3 +7,9 @@
       copy:
         src: ../app
         dest: /home/pi/
+
+    - name: Setup python environment
+      command:
+        cmd: pip3 install -r /home/pi/app/requirements.txt
+
+

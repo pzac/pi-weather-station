@@ -9,6 +9,11 @@
     name: python3-pip
     state: present
 
+- name: "python3-setuptools is present"
+  package:
+    name: python3-setuptools
+    state: present
+
 - name: "python3-smbus is present"
   package:
     name: python3-smbus

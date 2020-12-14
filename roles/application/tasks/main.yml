@@ -2,8 +2,9 @@
 - name: Update application
   copy:
     src: "../app/{{ item }}"
-    dest: /home/pi/
+    dest: /home/pi/app/
   with_items:
     - requirements.txt
     - hello.py
+    - main.py
 

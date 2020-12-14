@@ -7,4 +7,5 @@
     - requirements.txt
     - hello.py
     - main.py
+    - create-database.sql
 

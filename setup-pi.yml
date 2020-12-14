@@ -16,3 +16,4 @@
     - ufw
     - docker_pi_sensor_hub
     - dotfiles
+    - sqlite3

@@ -1,0 +1,5 @@
+---
+- name: "sqlite3 is present"
+  package:
+    name: sqlite3
+    state: present

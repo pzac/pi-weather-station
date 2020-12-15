@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS data(
   ext_temp INTEGER,
   brightness INTEGER,
   int_temp INTEGER,
+  bar_temp INTEGER,
   humidity INTEGER,
   pressure FLOAT,
   motion BOOLEAN

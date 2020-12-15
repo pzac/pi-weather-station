@@ -8,4 +8,5 @@
     - hello.py
     - main.py
     - create-database.sql
+    - reset-db.sh
 

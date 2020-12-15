@@ -12,8 +12,8 @@
     - name: Create database
       shell:
         chdir: /home/pi/app
-        cmd: sqlite3 data.sqlite3 < create-database.sql
-        creates: /home/pi/app/data.sqlite3
+        cmd: sqlite3 data.db < create-database.sql
+        creates: /home/pi/app/data.db
 
 
 

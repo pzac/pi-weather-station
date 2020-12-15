@@ -11,9 +11,6 @@ try:
     sql = "INSERT INTO data(ext_temp, int_temp, humidity, motion, brightness, bar_temp, pressure) VALUES(?, ?, ?, ?, ?, ?, ?)"
 
     while True:
-        localtime = time.localtime()
-        t = time.strftime("%I:%M:%S %p", localtime)
-
         ext_temp   = hub.get_off_board_temperature()
         humidity   = hub.get_humidity()
         int_temp   = hub.get_temperature()
@@ -22,6 +19,8 @@ try:
         bar_temp   = hub.get_barometer_temperature()
         pressure   = hub.get_barometer_pressure()
 
+        localtime = time.localtime()
+        t = time.strftime("%I:%M:%S %p", localtime)
         print(t + "\t"+ "Int Temp: " + str(int_temp) + "C Ext Temp: " + str(ext_temp) + "C")
 
         with closing(connection.cursor()) as cursor:

@@ -3,6 +3,16 @@
   hosts: all
   gather_facts: false
 
-  roles:
-    - application
-
+  tasks:
+    - name: Update application
+      copy:
+        src: "../app/{{ item }}"
+        dest: /home/pi/app/
+      with_items:
+        - requirements.txt
+        - hello.py
+        - main.py
+        - create-database.sql
+        - reset-db.sh
+      notify:
+        - Restart sensor loop

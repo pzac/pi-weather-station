@@ -10,3 +10,23 @@
     - create-database.sql
     - reset-db.sh
 
+- name: Setup python environment
+  command:
+    cmd: pip3 install -r /home/pi/app/requirements.txt
+
+- name: Create database
+  shell:
+    chdir: /home/pi/app
+    cmd: sqlite3 data.db < create-database.sql
+    creates: /home/pi/app/data.db
+
+- name: Copy systemd service file
+  become: true
+  copy:
+    src: sensor-loop.service
+    dest: /etc/systemd/system
+  notify:
+    - Start sensor loop
+
+
+

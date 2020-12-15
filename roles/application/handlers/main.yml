@@ -1,0 +1,12 @@
+---
+- name: Start sensor loop
+  service:
+    name: sensor-loop
+    state: started
+    enabled: true
+
+- name: Restart sensor loop
+  service:
+    name: sensor-loop
+    state: restarted
+

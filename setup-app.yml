@@ -4,17 +4,3 @@
 
   roles:
     - application
-
-  tasks:
-    - name: Setup python environment
-      command:
-        cmd: pip3 install -r /home/pi/app/requirements.txt
-    - name: Create database
-      shell:
-        chdir: /home/pi/app
-        cmd: sqlite3 data.db < create-database.sql
-        creates: /home/pi/app/data.db
-
-
-
-

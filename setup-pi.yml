@@ -1,0 +1,19 @@
+---
+- name: Setup
+  hosts: all
+  become: true
+
+  pre_tasks:
+    - name: "Update apt cache"
+      apt:
+        update_cache: true
+        cache_valid_time: 3600
+
+  roles:
+    - git
+    - zsh
+    - nginx
+    - ufw
+    - docker_pi_sensor_hub
+    - dotfiles
+    - sqlite3

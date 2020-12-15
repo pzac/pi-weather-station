@@ -1,0 +1,11 @@
+---
+- name: "zsh is present"
+  package:
+    name: zsh
+    state: present
+
+- name: "zsh is pi user shell"
+  user:
+    name: pi
+    shell: /bin/zsh
+

@@ -1,0 +1,18 @@
+---
+- name: "Install UFW"
+  package:
+    name: ufw
+    state: present
+
+- ufw:
+    rule: allow
+    port: ssh
+    proto: tcp
+
+- ufw:
+    rule: allow
+    name: Nginx HTTP
+
+- ufw:
+    state: enabled
+    default: deny

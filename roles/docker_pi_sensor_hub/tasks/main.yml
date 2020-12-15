@@ -1,0 +1,29 @@
+---
+- name: "python3 is present"
+  package:
+    name: python3
+    state: present
+
+- name: "python3-pip is present"
+  package:
+    name: python3-pip
+    state: present
+
+- name: "python3-setuptools is present"
+  package:
+    name: python3-setuptools
+    state: present
+
+- name: "python3-smbus is present"
+  package:
+    name: python3-smbus
+    state: present
+
+- name: "Copy sensor-test.py"
+  become: false
+  copy:
+    src: ./files/sensor-test.py
+    dest: /home/pi/sensor-test.py
+    mode: 0700
+
+

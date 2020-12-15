@@ -1,0 +1,5 @@
+---
+- name: "git is present"
+  package:
+    name: git
+    state: present

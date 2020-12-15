@@ -3,7 +3,7 @@ import sqlite3
 from sensorhub.hub import SensorHub
 from contextlib import closing
 
-interval = 30.0
+interval = 60.0
 hub = SensorHub(None)
 
 try:

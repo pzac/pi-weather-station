@@ -10,9 +10,11 @@
         dest: /home/pi/app/
       with_items:
         - requirements.txt
-        - hello.py
+        - web.py
+        - web.ini
         - main.py
         - create-database.sql
         - reset-db.sh
+        - wsgi.py
       notify:
         - Restart sensor loop

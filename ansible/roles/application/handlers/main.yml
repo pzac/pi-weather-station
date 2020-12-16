@@ -10,3 +10,25 @@
     name: sensor-loop
     state: restarted
 
+- name: Start sensor app
+  service:
+    name: sensor-app
+    state: started
+    enabled: true
+
+- name: Restart sensor app
+  service:
+    name: sensor-app
+    state: restarted
+
+- name: Restart nginx
+  become: true
+  service:
+    name: nginx
+    state: restarted
+
+- name: Reload systemd
+  become: true
+  systemd:
+    daemon_reload: true
+

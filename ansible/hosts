@@ -4,3 +4,4 @@
 [all:vars]
 ansible_connection=ssh
 ansible_user=pi
+ansible_python_interpreter=/usr/bin/python3

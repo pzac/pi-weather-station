@@ -2,19 +2,15 @@
 - name: Update app
   hosts: all
   gather_facts: false
+  vars_files:
+    - vars.yml
 
   tasks:
     - name: Update application
       copy:
         src: "../app/{{ item }}"
-        dest: /home/pi/app/
-      with_items:
-        - requirements.txt
-        - web.py
-        - web.ini
-        - main.py
-        - create-database.sql
-        - reset-db.sh
-        - wsgi.py
+        dest: "{{ app_root }}/"
+      with_items: "{{ app_files }}"
       notify:
         - Restart sensor loop
+        - Restart sensor app

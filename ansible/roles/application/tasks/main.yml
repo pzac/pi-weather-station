@@ -2,33 +2,59 @@
 - name: Update application
   copy:
     src: "../app/{{ item }}"
-    dest: /home/pi/app/
-  with_items:
-    - requirements.txt
-    - web.py
-    - web.ini
-    - main.py
-    - create-database.sql
-    - reset-db.sh
-    - wsgi.py
+    dest: "{{ app_root }}/"
+  with_items: "{{ app_files }}"
 
-- name: Setup python environment
-  command:
-    cmd: pip3 install -r /home/pi/app/requirements.txt
+- name: Install python requirements
+  pip:
+    requirements: "{{ app_root}}/requirements.txt"
+    executable: pip3
+
+- name: Setup uWSGI
+  become: true
+  pip:
+    name: uwsgi
+    executable: pip3
+
+- name: Update Nginx configuration
+  become: true
+  copy:
+    src: web-app
+    dest: /etc/nginx/sites-available
+
+- name: Remove default nginx config symlink
+  become: true
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  notify: Restart nginx
+
+- name: Create symlink
+  become: true
+  file:
+    src: /etc/nginx/sites-available/web-app
+    dest: /etc/nginx/sites-enabled/web-app
+    state: link
+  notify: Restart nginx
 
 - name: Create database
   shell:
-    chdir: /home/pi/app
+    chdir: "{{ app_root }}"
     cmd: sqlite3 data.db < create-database.sql
-    creates: /home/pi/app/data.db
+    creates: "{{ app_root }}/data.db"
 
-- name: Copy systemd service file
+- name: Copy systemd service files
   become: true
   copy:
-    src: sensor-loop.service
+    src: "{{ item }}"
     dest: /etc/systemd/system
+  with_items:
+    - sensor-loop.service
+    - sensor-app.service
   notify:
-    - Start sensor loop
+    - Reload systemd
+    - Restart sensor loop
+    - Restart sensor app
 
 
 

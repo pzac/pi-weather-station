@@ -1,6 +1,9 @@
 ---
 - name: Setup app
   hosts: all
+  vars_files:
+    - vars.yml
+
 
   roles:
     - application

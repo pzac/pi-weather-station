@@ -1,0 +1,10 @@
+---
+app_root: /home/pi/app
+app_files:
+  - requirements.txt
+  - web.py
+  - web.ini
+  - main.py
+  - create-database.sql
+  - reset-db.sh
+  - wsgi.py

@@ -1,55 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Rasp Weather Station</title>
+    <link rel="stylesheet" href='/static/bulma.min.css' />
+    <link rel="stylesheet" href='/static/main.css' />
+  </head>
+  <body>
+    <section class="hero is-info">
+      <div class="hero-body">
+        <div class="container is-fluid">
+          <h1 class="title">
+            Rasp Weather Station
+          </h1>
+        </div>
+      </div>
+    </section>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Rasp Weather Station</title>
-  <style type="text/css">
-    table td {
-      border: 1px solid black;
-    }
-  </style>
-</head>
-
-<body>
-  <h1>Rasp Weather Station</h1>
-  <h2>Latest data</h2>
-  <table>
-    <tr>
-      <td>Time</td>
-      <td>{{ data[1] }}</td>
-    </tr>
-    <tr>
-      <td>Ext Temp</td>
-      <td>{{ data[2] }}C</td>
-    </tr>
-    <tr>
-      <td>Brightness</td>
-      <td>{{ data[3] }}</td>
-    </tr>
-    <tr>
-      <td>Int Temp</td>
-      <td>{{ data[4] }}C</td>
-    </tr>
-    <tr>
-      <td>Bar Temp</td>
-      <td>{{ data[5] }}C</td>
-    </tr>
-    <tr>
-      <td>Humidity</td>
-      <td>{{ data[6] }}%</td>
-    </tr>
-    <tr>
-      <td>Pressure</td>
-      <td>{{ data[7] }}hPa</td>
-    </tr>
-    <tr>
-      <td>Motion</td>
-      <td>{{ data[8] }}</td>
-    </tr>
-  </table>
-</body>
-
+    <main role="main" class="container is-fluid">
+      <div class="p-3">
+        <table class="table">
+          <tr>
+            <th>Time</th>
+            <td>{{ data[1] }}</td>
+          </tr>
+          <tr>
+            <th>Ext Temp</th>
+            <td>{{ data[2] }}C</td>
+          </tr>
+          <tr>
+            <th>Brightness</th>
+            <td>{{ data[3] }}</td>
+          </tr>
+          <tr>
+            <th>Int Temp</th>
+            <td>{{ data[4] }}C</td>
+          </tr>
+          <tr>
+            <th>Bar Temp</th>
+            <td>{{ data[5] }}C</td>
+          </tr>
+          <tr>
+            <th>Humidity</th>
+            <td>{{ data[6] }}%</td>
+          </tr>
+          <tr>
+            <th>Pressure</th>
+            <td>{{ data[7] }}hPa</td>
+          </tr>
+          <tr>
+            <th>Motion</th>
+            <td>{{ data[8] }}</td>
+          </tr>
+        </table>
+      </div>
+    </main>
 </html>

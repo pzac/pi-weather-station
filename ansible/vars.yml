@@ -9,3 +9,4 @@ app_files:
   - reset-db.sh
   - wsgi.py
   - templates
+  - static

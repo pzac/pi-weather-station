@@ -5,6 +5,9 @@
   vars_files:
     - vars.yml
 
+  handlers:
+    - import_tasks: roles/application/handlers/main.yml
+
   tasks:
     - name: Update application
       copy:

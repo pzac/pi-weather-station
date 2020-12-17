@@ -1,22 +1,26 @@
 ---
 - name: Start sensor loop
+  become: true
   service:
     name: sensor-loop
     state: started
     enabled: true
 
 - name: Restart sensor loop
+  become: true
   service:
     name: sensor-loop
     state: restarted
 
 - name: Start sensor app
+  become: true
   service:
     name: sensor-app
     state: started
     enabled: true
 
 - name: Restart sensor app
+  become: true
   service:
     name: sensor-app
     state: restarted

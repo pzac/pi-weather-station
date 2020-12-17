@@ -8,7 +8,6 @@ Group=www-data
 WorkingDirectory=/home/pi/app
 ExecStart=/usr/local/bin/uwsgi --ini web.ini
 
-StandardOutput=null
 Type=idle
 
 [Install]

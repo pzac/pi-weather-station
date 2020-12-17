@@ -8,3 +8,4 @@ app_files:
   - create-database.sql
   - reset-db.sh
   - wsgi.py
+  - templates

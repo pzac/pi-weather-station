@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,json
 from flask import render_template
 import sqlite3
 
@@ -18,6 +18,33 @@ def index():
     finally:
         if (conn):
             conn.close()
+
+@app.route("/last-hour.json")
+def last_hour():
+    data = dataset()
+    try:
+        conn = sqlite3.connect("data.db")
+        cursor = conn.cursor()
+        query = "SELECT * FROM data WHERE time >= datetime('now', '-1 hour') ORDER BY time DESC"
+        cursor.execute(query)
+        rows = cursor.fetchall()
+        for row in rows:
+            data['time'].append(row[1])
+            data['ext_temp'].append(row[2])
+            data['brightness'].append(row[3])
+            data['int_temp'].append(row[4])
+            data['bar_temp'].append(row[5])
+        return json.dumps(data)
+    except sqlite3.Error as error:
+        return error
+    finally:
+        if (conn):
+            conn.close()
+
+
+def dataset():
+    out = {'time': [], 'ext_temp': [], 'brightness': [], 'int_temp': [], 'bar_temp': []}
+    return out
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')

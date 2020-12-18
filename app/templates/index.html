@@ -7,6 +7,10 @@
     <title>Rasp Weather Station</title>
     <link rel="stylesheet" href='/static/bulma.min.css' />
     <link rel="stylesheet" href='/static/main.css' />
+    <link rel="stylesheet" href='/static/c3.min.css' />
+    <script src="/static/d3.v5.min.js" charset="utf-8"></script>
+    <script src="/static/c3.min.js"></script>
+    <script src="/static/app.js"></script>
   </head>
   <body>
     <section class="hero is-info">
@@ -20,41 +24,52 @@
     </section>
 
     <main role="main" class="container is-fluid">
-      <div class="p-3">
-        <table class="table">
-          <tr>
-            <th>Time</th>
-            <td>{{ data[1] }}</td>
-          </tr>
-          <tr>
-            <th>Ext Temp</th>
-            <td>{{ data[2] }}C</td>
-          </tr>
-          <tr>
-            <th>Brightness</th>
-            <td>{{ data[3] }}</td>
-          </tr>
-          <tr>
-            <th>Int Temp</th>
-            <td>{{ data[4] }}C</td>
-          </tr>
-          <tr>
-            <th>Bar Temp</th>
-            <td>{{ data[5] }}C</td>
-          </tr>
-          <tr>
-            <th>Humidity</th>
-            <td>{{ data[6] }}%</td>
-          </tr>
-          <tr>
-            <th>Pressure</th>
-            <td>{{ data[7] }}hPa</td>
-          </tr>
-          <tr>
-            <th>Motion</th>
-            <td>{{ data[8] }}</td>
-          </tr>
-        </table>
+      <div class="columns">
+        <div class="column is-one-quarter">
+          <div class="p-3">
+            <table class="table">
+              <tr>
+                <th>Time</th>
+                <td>{{ data[1] }}</td>
+              </tr>
+              <tr>
+                <th>Ext Temp</th>
+                <td>{{ data[2] }}C</td>
+              </tr>
+              <tr>
+                <th>Brightness</th>
+                <td>{{ data[3] }}</td>
+              </tr>
+              <tr>
+                <th>Int Temp</th>
+                <td>{{ data[4] }}C</td>
+              </tr>
+              <tr>
+                <th>Bar Temp</th>
+                <td>{{ data[5] }}C</td>
+              </tr>
+              <tr>
+                <th>Humidity</th>
+                <td>{{ data[6] }}%</td>
+              </tr>
+              <tr>
+                <th>Pressure</th>
+                <td>{{ data[7] }}hPa</td>
+              </tr>
+              <tr>
+                <th>Motion</th>
+                <td>{{ data[8] }}</td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+        <div class="column is-three-quarters">
+          <div class="p-3">
+            <div id="chart"></div>
+          </div>
+        </div>
       </div>
+
     </main>
 </html>

@@ -21,13 +21,16 @@ def index():
 
 @app.route("/last-hour.json")
 def last_hour():
-    data = dataset()
+    sql = "SELECT * FROM data WHERE time >= datetime('now', '-1 hour') ORDER BY time DESC"
+    data = query_to_dataset(sql)
+    return json.dumps(data)
+
+def query_to_dataset(sql):
+    data = {'time': [], 'ext_temp': [], 'brightness': [], 'int_temp': [], 'bar_temp': [], 'humidity': [], 'pressure': [], 'motion': []}
     try:
         conn = sqlite3.connect("data.db")
         cursor = conn.cursor()
-        query = "SELECT * FROM data WHERE time >= datetime('now', '-1 hour') ORDER BY time DESC"
-        # query = "SELECT * FROM data ORDER BY time DESC LIMIT 60"
-        cursor.execute(query)
+        cursor.execute(sql)
         rows = cursor.fetchall()
         for row in rows:
             data['time'].append(row[1])
@@ -38,17 +41,13 @@ def last_hour():
             data['humidity'].append(row[6])
             data['pressure'].append(row[7])
             data['motion'].append(row[8])
-        return json.dumps(data)
+        return data
     except sqlite3.Error as error:
         return error
     finally:
         if (conn):
             conn.close()
 
-
-def dataset():
-    out = {'time': [], 'ext_temp': [], 'brightness': [], 'int_temp': [], 'bar_temp': [], 'humidity': [], 'pressure': [], 'motion': []}
-    return out
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')

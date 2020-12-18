@@ -23,30 +23,35 @@
       </div>
     </section>
 
-    <main role="main" class="container is-fluid">
-      <div class="p-3">
-        <table class="table">
-          <tr>
-            <th>Time</th>
-            <td>{{ data[1] }}</td>
-            <th>Ext Temp</th>
-            <td>{{ data[2] }}C</td>
-            <th>Brightness</th>
-            <td>{{ data[3] }}</td>
-            <th>Int Temp</th>
-            <td>{{ data[4] }}C</td>
-            <th>Bar Temp</th>
-            <td>{{ data[5] }}C</td>
-            <th>Humidity</th>
-            <td>{{ data[6] }}%</td>
-            <th>Pressure</th>
-            <td>{{ data[7] }}hPa</td>
-            <th>Motion</th>
-            <td>{{ data[8] }}</td>
-          </tr>
-        </table>
-      </div>
+    <section class="has-background-light">
+      <div class="container is-fluid">
+        <div class="p-3">
+          <table class="table has-background-light">
+            <tr>
+              <th>Time</th>
+              <td>{{ data[1] }}</td>
+              <th>Ext Temp</th>
+              <td>{{ data[2] }}C</td>
+              <th>Brightness</th>
+              <td>{{ data[3] }}</td>
+              <th>Int Temp</th>
+              <td>{{ data[4] }}C</td>
+              <th>Bar Temp</th>
+              <td>{{ data[5] }}C</td>
+              <th>Humidity</th>
+              <td>{{ data[6] }}%</td>
+              <th>Pressure</th>
+              <td>{{ data[7] }}hPa</td>
+              <th>Motion</th>
+              <td>{{ data[8] }}</td>
+            </tr>
+          </table>
+        </div>
 
+      </div>
+    </section>
+
+    <main role="main" class="container is-fluid">
       <h2 class="title">Last hour</h2>
       <div class="columns">
         <div class="column is-one-third">

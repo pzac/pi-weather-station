@@ -18,6 +18,11 @@ function last_hour_charts(data) {
               format: '%H:%M',
               rotate: -60
             }
+          },
+          y: {
+            tick: {
+              format: function (d) { return d + " C" }
+            }
           }
         }
     });
@@ -31,7 +36,7 @@ function last_hour_charts(data) {
         columns: [
           ['x'].concat(data.time),
           ['humidity'].concat(data.humidity)
-        ]
+        ],
       },
       axis: {
         x: {
@@ -39,6 +44,11 @@ function last_hour_charts(data) {
           tick: {
             format: '%H:%M',
             rotate: -60
+          }
+        },
+        y: {
+          tick: {
+            format: function (d) { return d + "%" }
           }
         }
       }
@@ -61,6 +71,11 @@ function last_hour_charts(data) {
           tick: {
             format: '%H:%M',
             rotate: -60
+          }
+        },
+        y: {
+          tick: {
+            format: function (d) { return d + " hPa" }
           }
         }
       }
@@ -87,7 +102,15 @@ function last_24_hours_charts(data) {
               format: '%H:%M',
               rotate: -60
             }
+          },
+          y: {
+            tick: {
+              format: function (d) { return d + " C" }
+            }
           }
+        },
+        point: {
+          show: false
         }
     });
 
@@ -109,7 +132,15 @@ function last_24_hours_charts(data) {
             format: '%H:%M',
             rotate: -60
           }
+        },
+        y: {
+          tick: {
+            format: function (d) { return d + "%" }
+          }
         }
+      },
+      point: {
+        show: false
       }
   });
 
@@ -131,7 +162,15 @@ function last_24_hours_charts(data) {
             format: '%H:%M',
             rotate: -60
           }
+        },
+        y: {
+          tick: {
+            format: function (d) { return d + " hPa" }
+          }
         }
+      },
+      point: {
+        show: false
       }
   });
 }

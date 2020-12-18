@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function(){
         ['bar_temp'].concat(data.bar_temp)
       ]
       c3.generate({
-        bindto: '#temperature-chart-last',
+        bindto: '#temperature-chart-last-hour',
           data: {
             x: 'x',
             xFormat: '%Y-%m-%d %H:%M:%S',
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function(){
       ['humidity'].concat(data.humidity)
     ]
     c3.generate({
-      bindto: '#humidity-chart-last',
+      bindto: '#humidity-chart-last-hour',
         data: {
           x: 'x',
           xFormat: '%Y-%m-%d %H:%M:%S',
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function(){
       ['pressure'].concat(data.pressure)
     ]
     c3.generate({
-      bindto: '#pressure-chart-last',
+      bindto: '#pressure-chart-last-hour',
         data: {
           x: 'x',
           xFormat: '%Y-%m-%d %H:%M:%S',

@@ -26,6 +26,7 @@ def last_hour():
         conn = sqlite3.connect("data.db")
         cursor = conn.cursor()
         query = "SELECT * FROM data WHERE time >= datetime('now', '-1 hour') ORDER BY time DESC"
+        # query = "SELECT * FROM data ORDER BY time DESC LIMIT 60"
         cursor.execute(query)
         rows = cursor.fetchall()
         for row in rows:
@@ -34,6 +35,9 @@ def last_hour():
             data['brightness'].append(row[3])
             data['int_temp'].append(row[4])
             data['bar_temp'].append(row[5])
+            data['humidity'].append(row[6])
+            data['pressure'].append(row[7])
+            data['motion'].append(row[8])
         return json.dumps(data)
     except sqlite3.Error as error:
         return error
@@ -43,7 +47,7 @@ def last_hour():
 
 
 def dataset():
-    out = {'time': [], 'ext_temp': [], 'brightness': [], 'int_temp': [], 'bar_temp': []}
+    out = {'time': [], 'ext_temp': [], 'brightness': [], 'int_temp': [], 'bar_temp': [], 'humidity': [], 'pressure': [], 'motion': []}
     return out
 
 if __name__ == "__main__":

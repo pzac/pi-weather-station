@@ -7,11 +7,13 @@ interval = 60.0
 hub = SensorHub(None)
 debug = False
 
-try:
-    connection = sqlite3.connect("data.db")
-    sql = "INSERT INTO data(ext_temp, int_temp, humidity, motion, brightness, bar_temp, pressure) VALUES(?, ?, ?, ?, ?, ?, ?)"
+sql = "INSERT INTO data(ext_temp, int_temp, humidity, motion, brightness, bar_temp, pressure) VALUES(?, ?, ?, ?, ?, ?, ?)"
 
-    while True:
+
+while True:
+    try:
+        connection = sqlite3.connect("data.db")
+
         ext_temp   = hub.get_off_board_temperature()
         humidity   = hub.get_humidity()
         int_temp   = hub.get_temperature()
@@ -30,9 +32,9 @@ try:
             connection.commit()
 
         time.sleep(interval)
-except sqlite3.Error as error:
-    print("Failed to insert data", error)
-finally:
-    if (connection):
-        connection.close()
-        print("The SQLite connection is closed")
+    except sqlite3.Error as error:
+        print("Failed to insert data", error)
+    finally:
+        if (connection):
+            connection.close()
+            print("The SQLite connection is closed")

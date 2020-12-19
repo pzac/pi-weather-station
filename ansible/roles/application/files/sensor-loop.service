@@ -5,8 +5,8 @@ Description=Sensor Loop service
 User=pi
 WorkingDirectory=/home/pi/app
 ExecStart=/usr/bin/python3 main.py
-StandardOutput=null
 Type=idle
+Restart=always
 
 [Install]
 WantedBy=multi-user.target

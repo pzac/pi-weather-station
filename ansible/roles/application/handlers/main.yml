@@ -24,12 +24,14 @@
   service:
     name: sensor-app
     state: restarted
+    enabled: true
 
 - name: Restart nginx
   become: true
   service:
     name: nginx
     state: restarted
+    enabled: true
 
 - name: Reload systemd
   become: true

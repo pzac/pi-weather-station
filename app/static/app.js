@@ -8,8 +8,15 @@ function last_hour_charts(data) {
           ['x'].concat(data.time),
           ['ext_temp'].concat(data.ext_temp),
           ['int_temp'].concat(data.int_temp),
-          ['bar_temp'].concat(data.bar_temp)
+          ['bar_temp'].concat(data.bar_temp),
+          ['humidity'].concat(data.humidity)
         ],
+        axes: {
+          ext_temp: 'y',
+          int_temp: 'y',
+          bar_temp: 'y',
+          humidity: 'y2',
+        }
       },
       axis: {
         x: {
@@ -23,36 +30,19 @@ function last_hour_charts(data) {
           tick: {
             format: function (d) { return d + " C" }
           }
+        },
+        y2: {
+          show: true,
+          tick: {
+            format: function (d) { return d + " %" }
+          }
         }
+      },
+      point: {
+        show: false
       }
   });
 
-  // humidity
-  c3.generate({
-    bindto: '#humidity-chart-last-hour',
-      data: {
-        x: 'x',
-        xFormat: '%Y-%m-%d %H:%M:%S',
-        columns: [
-          ['x'].concat(data.time),
-          ['humidity'].concat(data.humidity)
-        ],
-      },
-      axis: {
-        x: {
-          type: 'timeseries',
-          tick: {
-            format: '%H:%M',
-            rotate: -60
-          }
-        },
-        y: {
-          tick: {
-            format: function (d) { return d + "%" }
-          }
-        }
-      }
-  });
 
   // pressure
   c3.generate({
@@ -92,8 +82,15 @@ function last_24_hours_charts(data) {
           ['x'].concat(data.time),
           ['ext_temp'].concat(data.ext_temp),
           ['int_temp'].concat(data.int_temp),
-          ['bar_temp'].concat(data.bar_temp)
+          ['bar_temp'].concat(data.bar_temp),
+          ['humidity'].concat(data.humidity)
         ],
+        axes: {
+          ext_temp: 'y',
+          int_temp: 'y',
+          bar_temp: 'y',
+          humidity: 'y2',
+        }
       },
       axis: {
         x: {
@@ -107,35 +104,11 @@ function last_24_hours_charts(data) {
           tick: {
             format: function (d) { return d + " C" }
           }
-        }
-      },
-      point: {
-        show: false
-      }
-  });
-
-  // humidity
-  c3.generate({
-    bindto: '#humidity-chart-last-24-hours',
-      data: {
-        x: 'x',
-        xFormat: '%Y-%m-%d %H:%M:%S',
-        columns: [
-          ['x'].concat(data.time),
-          ['humidity'].concat(data.humidity)
-        ]
-      },
-      axis: {
-        x: {
-          type: 'timeseries',
-          tick: {
-            format: '%H:%M',
-            rotate: -60
-          }
         },
-        y: {
+        y2: {
+          show: true,
           tick: {
-            format: function (d) { return d + "%" }
+            format: function (d) { return d + " %" }
           }
         }
       },
@@ -186,8 +159,15 @@ function last_week_charts(data) {
           ['x'].concat(data.time),
           ['ext_temp'].concat(data.ext_temp),
           ['int_temp'].concat(data.int_temp),
-          ['bar_temp'].concat(data.bar_temp)
+          ['bar_temp'].concat(data.bar_temp),
+          ['humidity'].concat(data.humidity)
         ],
+        axes: {
+          ext_temp: 'y',
+          int_temp: 'y',
+          bar_temp: 'y',
+          humidity: 'y2',
+        }
       },
       axis: {
         x: {
@@ -201,35 +181,11 @@ function last_week_charts(data) {
           tick: {
             format: function (d) { return d + " C" }
           }
-        }
-      },
-      point: {
-        show: false
-      }
-  });
-
-  // humidity
-  c3.generate({
-    bindto: '#humidity-chart-last-week',
-      data: {
-        x: 'x',
-        xFormat: '%Y-%m-%d %H:%M:%S',
-        columns: [
-          ['x'].concat(data.time),
-          ['humidity'].concat(data.humidity)
-        ]
-      },
-      axis: {
-        x: {
-          type: 'timeseries',
-          tick: {
-            format: '%Y-%m-%d %H:%M',
-            rotate: -60
-          }
         },
-        y: {
+        y2: {
+          show: true,
           tick: {
-            format: function (d) { return d + "%" }
+            format: function (d) { return d + " %" }
           }
         }
       },

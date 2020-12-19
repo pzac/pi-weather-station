@@ -16,7 +16,8 @@ function last_hour_charts(data) {
           int_temp: 'y',
           bar_temp: 'y',
           humidity: 'y2',
-        }
+        },
+        type: 'spline',
       },
       axis: {
         x: {
@@ -40,7 +41,7 @@ function last_hour_charts(data) {
       },
       point: {
         show: false
-      }
+      },
   });
 
 
@@ -53,7 +54,8 @@ function last_hour_charts(data) {
         columns: [
           ['x'].concat(data.time),
           ['pressure'].concat(data.pressure)
-        ]
+        ],
+        type: 'spline',
       },
       axis: {
         x: {
@@ -90,7 +92,8 @@ function last_24_hours_charts(data) {
           int_temp: 'y',
           bar_temp: 'y',
           humidity: 'y2',
-        }
+        },
+        type: 'line',
       },
       axis: {
         x: {
@@ -126,7 +129,8 @@ function last_24_hours_charts(data) {
         columns: [
           ['x'].concat(data.time),
           ['pressure'].concat(data.pressure)
-        ]
+        ],
+        type: 'line',
       },
       axis: {
         x: {
@@ -167,7 +171,8 @@ function last_week_charts(data) {
           int_temp: 'y',
           bar_temp: 'y',
           humidity: 'y2',
-        }
+        },
+        type: 'line',
       },
       axis: {
         x: {
@@ -203,7 +208,8 @@ function last_week_charts(data) {
         columns: [
           ['x'].concat(data.time),
           ['pressure'].concat(data.pressure)
-        ]
+        ],
+        type: 'line',
       },
       axis: {
         x: {

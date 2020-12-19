@@ -31,6 +31,12 @@ def last_24_hours():
     data = query_to_dataset(sql)
     return json.dumps(data)
 
+@app.route("/last-week.json")
+def last_week():
+    sql = "SELECT * FROM data WHERE time >= datetime('now', '-7 days') AND (id % 120) = 0 ORDER BY time DESC"
+    data = query_to_dataset(sql)
+    return json.dumps(data)
+
 def query_to_dataset(sql):
     data = {'time': [], 'ext_temp': [], 'brightness': [], 'int_temp': [], 'bar_temp': [], 'humidity': [], 'pressure': [], 'motion': []}
     try:

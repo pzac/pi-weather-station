@@ -5,6 +5,7 @@ from contextlib import closing
 
 interval = 60.0
 hub = SensorHub(None)
+debug = False
 
 try:
     connection = sqlite3.connect("data.db")
@@ -19,9 +20,10 @@ try:
         bar_temp   = hub.get_barometer_temperature()
         pressure   = hub.get_barometer_pressure()
 
-        localtime = time.localtime()
-        t = time.strftime("%I:%M:%S %p", localtime)
-        print(t + "\t"+ "Int Temp: " + str(int_temp) + "C Ext Temp: " + str(ext_temp) + "C")
+        if debug:
+            localtime = time.localtime()
+            t = time.strftime("%I:%M:%S %p", localtime)
+            print(t + "\t"+ "Int Temp: " + str(int_temp) + "C Ext Temp: " + str(ext_temp) + "C")
 
         with closing(connection.cursor()) as cursor:
             cursor.execute(sql, (ext_temp, int_temp, humidity, motion, brightness, bar_temp, pressure))

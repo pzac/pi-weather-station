@@ -9,6 +9,7 @@ WorkingDirectory=/home/pi/app
 ExecStart=/usr/local/bin/uwsgi --ini web.ini
 Type=idle
 Restart=always
+RestartSec=2
 
 [Install]
 WantedBy=multi-user.target

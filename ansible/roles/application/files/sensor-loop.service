@@ -7,6 +7,7 @@ WorkingDirectory=/home/pi/app
 ExecStart=/usr/bin/python3 main.py
 Type=idle
 Restart=always
+RestartSec=2
 
 [Install]
 WantedBy=multi-user.target

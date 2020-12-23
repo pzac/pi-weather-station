@@ -5,6 +5,7 @@ app_files:
   - web.py
   - web.ini
   - main.py
+  - pi_sensor.py
   - create-database.sql
   - reset-db.sh
   - wsgi.py

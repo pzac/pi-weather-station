@@ -1,25 +1,27 @@
 import time
 import sqlite3
-from sensorhub.hub import SensorHub
+from pi_sensor import PiSensor
 from contextlib import closing
 
 interval = 60.0
-hub = SensorHub(None)
 debug = False
 
 connection = sqlite3.connect("data.db")
 
-sql = "INSERT INTO data(ext_temp, int_temp, humidity, motion, brightness, bar_temp, pressure) VALUES(?, ?, ?, ?, ?, ?, ?)"
+sql = "INSERT INTO data(ext_temp, int_temp, humidity, motion, brightness, bar_temp, pressure) " \
+      "VALUES(?, ?, ?, ?, ?, ?, ?)"
+
+hub = PiSensor()
 
 while True:
     try:
-        ext_temp   = hub.get_off_board_temperature()
-        humidity   = hub.get_humidity()
-        int_temp   = hub.get_temperature()
-        motion     = hub.is_motion_detected()
-        brightness = hub.get_brightness()
-        bar_temp   = hub.get_barometer_temperature()
-        pressure   = hub.get_barometer_pressure()
+        ext_temp   = hub.ext_temp()
+        humidity   = hub.humidity()
+        int_temp   = hub.int_temp()
+        motion     = hub.motion()
+        brightness = hub.brightness()
+        bar_temp   = hub.bar_temp()
+        pressure   = hub.pressure()
 
         if debug:
             localtime = time.localtime()
@@ -32,3 +34,4 @@ while True:
         time.sleep(interval)
     except IOError:
         print("Error reading from sensor")
+

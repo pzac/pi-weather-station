@@ -7,3 +7,7 @@ body {
 footer {
   margin-top: auto;
 }
+
+.c3-target-int_temp, .c3-target-bar_temp {
+  stroke-dasharray: 3, 3;
+}

@@ -25,27 +25,39 @@
 
     <section class="has-background-light">
       <div class="container is-fluid">
-        <div class="p-3">
-          <table class="table has-background-light">
-            <tr>
-              <th>Time</th>
-              <td>{{ data[1] }}</td>
-              <th>Ext Temp</th>
-              <td>{{ data[2] }}C</td>
-              <th>Brightness</th>
-              <td>{{ data[3] }}</td>
-              <th>Int Temp</th>
-              <td>{{ data[4] }}C</td>
-              <th>Bar Temp</th>
-              <td>{{ data[5] }}C</td>
-              <th>Humidity</th>
-              <td>{{ data[6] }}%</td>
-              <th>Pressure</th>
-              <td>{{ data[7] }}hPa</td>
-              <th>Motion</th>
-              <td>{{ data[8] }}</td>
-            </tr>
-          </table>
+        <div class="p-3 is-flex is-flex-wrap-wrap is-justify-content-space-around">
+          <div class="mr-3">
+            <strong>Time</strong>
+            <span class="">{{ data[1] }}</span>
+          </div>
+          <div class="mr-3">
+            <strong>Ext Temp</strong>
+            <span class="">{{ data[2] }}C</span>
+          </div>
+          <div class="mr-3">
+            <strong>Brightness</strong>
+            <span class="">{{ data[3] }}</span>
+          </div>
+          <div class="mr-3">
+            <strong>Int Temp</strong>
+            <span class="">{{ data[4] }}C</span>
+          </div>
+          <div class="mr-3">
+            <strong>Bar Temp</strong>
+            <span class="">{{ data[5] }}C</span>
+          </div>
+          <div class="mr-3">
+            <strong>Humidity</strong>
+            <span class="">{{ data[6] }}%</span>
+          </div>
+          <div class="mr-3">
+            <strong>Pressure</strong>
+            <span class="">{{ data[7] }}hPa</span>
+          </div>
+          <div class="mr-3">
+            <strong>Motion</strong>
+            <span class="">{{ data[8] }}</span>
+          </div>
         </div>
 
       </div>

@@ -4,6 +4,8 @@ import sqlite3
 
 app = Flask(__name__, template_folder="./templates")
 
+ext_temp_offset = -2
+
 @app.route("/")
 def index():
     try:
@@ -40,7 +42,13 @@ def query_to_dataset(sql):
         rows = cursor.fetchall()
         for row in rows:
             data['time'].append(row[1])
-            data['ext_temp'].append(row[2])
+
+            ext_temp = row[2]
+            if ext_temp:
+                ext_temp = ext_temp + ext_temp_offset
+
+            data['ext_temp'].append(ext_temp)
+
             data['brightness'].append(row[3])
             data['int_temp'].append(row[4])
             data['bar_temp'].append(row[5])

@@ -14,7 +14,8 @@ def index():
         query = "SELECT " + fields() + " FROM data ORDER BY time DESC LIMIT 1"
         cursor.execute(query)
         rows = cursor.fetchall()
-        return render_template("index.html", data=rows[0])
+        data = normalize_row(rows[0])
+        return render_template("index.html", data=data)
     except sqlite3.Error as error:
         return error
     finally:
@@ -23,15 +24,15 @@ def index():
 
 @app.route("/last-hour.json")
 def last_hour():
-    return rows_where("time >= datetime('now', '-1 hour')")
+    return json.dumps(rows_where("time >= datetime('now', '-1 hour')"))
 
 @app.route("/last-24-hours.json")
 def last_24_hours():
-    return rows_where("time >= datetime('now', '-1 day') AND (id % 12) = 0")
+    return json.dumps(rows_where("time >= datetime('now', '-1 day') AND (id % 12) = 0"))
 
 @app.route("/last-week.json")
 def last_week():
-    return rows_where("time >= datetime('now', '-7 days') AND (id % 120) = 0")
+    return json.dumps(rows_where("time >= datetime('now', '-7 days') AND (id % 120) = 0"))
 
 def query_to_dataset(sql):
     data = {'time': [], 'ext_temp': [], 'brightness': [], 'int_temp': [], 'bar_temp': [], 'humidity': [], 'pressure': [], 'motion': []}
@@ -41,20 +42,16 @@ def query_to_dataset(sql):
         cursor.execute(sql)
         rows = cursor.fetchall()
         for row in rows:
-            data['time'].append(row[1])
+            row = normalize_row(row)
 
-            ext_temp = row[2]
-            if ext_temp:
-                ext_temp = ext_temp + ext_temp_offset
-
-            data['ext_temp'].append(ext_temp)
-
-            data['brightness'].append(row[3])
-            data['int_temp'].append(row[4])
-            data['bar_temp'].append(row[5])
-            data['humidity'].append(row[6])
-            data['pressure'].append(row[7])
-            data['motion'].append(row[8])
+            data['time'].append(row['time'])
+            data['ext_temp'].append(row['ext_temp'])
+            data['brightness'].append(row['brightness'])
+            data['int_temp'].append(row['int_temp'])
+            data['bar_temp'].append(row['bar_temp'])
+            data['humidity'].append(row['humidity'])
+            data['pressure'].append(row['pressure'])
+            data['motion'].append(row['motion'])
         return data
     except sqlite3.Error as error:
         return error
@@ -65,11 +62,28 @@ def query_to_dataset(sql):
 
 def rows_where(conditions):
     sql = "SELECT " + fields() + " FROM data WHERE " + conditions + " ORDER BY time DESC"
-    data = query_to_dataset(sql)
-    return json.dumps(data)
+    return query_to_dataset(sql)
 
 def fields():
     return "id, datetime(time, 'localtime'), ext_temp, brightness, int_temp, bar_temp, humidity, pressure, motion"
+
+def normalize_row(row):
+    ext_temp = row[2]
+    if ext_temp:
+        ext_temp = ext_temp + ext_temp_offset
+
+    out = {
+        'time': row[1],
+        'ext_temp': ext_temp,
+        'brightness': row[3],
+        'int_temp': row[4],
+        'bar_temp': row[5],
+        'humidity': row[6],
+        'pressure': row[7],
+        'motion': row[8],
+    }
+
+    return out
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
